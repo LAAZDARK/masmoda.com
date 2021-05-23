@@ -8,9 +8,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                    <a href="./shop.html">Shop</a>
-                    <span>Detail</span>
+                    <a href="{{ route('page.index')}} "><i class="fa fa-home"></i> Inicio</a>
+                    <a href="{{ route('page.index')}}">Tienda</a>
+                    <span>Detales</span>
                 </div>
             </div>
         </div>
@@ -31,16 +31,16 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="product-pic-zoom">
-                            <img class="product-big-img" src="{{ asset("/storage/{$product->image}")}}" alt="">
-                            <div class="zoom-icon">
+                        {{-- <div class="product-pic-zoom"> --}}
+                            <img class="product-big-img" src="{{ asset("/storage/{$product->image}")}}" alt="Image-producto-masmoda.com">
+                            {{-- <div class="zoom-icon">
                                 <i class="fa fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="product-thumbs">
+                            </div> --}}
+                        {{-- </div> --}}
+                        {{-- <div class="product-thumbs">
                             <div class="product-thumbs-track ps-slider owl-carousel">
-                                <div class="pt active" data-imgbigurl="{{asset('img/product-single/product-1.jpg')}}"><img
-                                        src="{{asset('img/product-single/product-1.jpg')}}" alt=""></div>
+                                <div class="pt active" data-imgbigurl="{{ asset("/storage/{$product->image}")}}"><img
+                                        src="{{ asset("/storage/{$product->image}")}}" alt=""></div>
                                 <div class="pt" data-imgbigurl="{{asset('img/product-single/product-2.jpg')}}"><img
                                         src="{{asset('img/product-single/product-2.jpg')}}" alt=""></div>
                                 <div class="pt" data-imgbigurl="{{asset('img/product-single/product-3.jpg')}}"><img
@@ -48,7 +48,7 @@
                                 <div class="pt" data-imgbigurl="{{asset('img/product-single/product-3.jpg')}}"><img
                                         src="{{asset('img/product-single/product-3.jpg')}}" alt=""></div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-lg-6">
                         <div class="product-details">
@@ -92,9 +92,9 @@
                                 <div class="pd-share">
                                     <div class="p-code">Sku : {{ $product->id}}</div>
                                     <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
+                                        <a href="https://www.facebook.com/"><i class="ti-facebook"></i></a>
+                                        <a href="https://twitter.com/?lang=es"><i class="ti-twitter-alt"></i></a>
+                                        <a href="https://www.instagram.com/?hl=es-la"><i class="ti-linkedin"></i></a>
                                     </div>
                                 </div>
                             {{-- </form> --}}
@@ -110,9 +110,7 @@
                             <li>
                                 <a data-toggle="tab" href="#tab-2" role="tab">ESPECIFICACIONES</a>
                             </li>
-                            <li>
-                                <a data-toggle="tab" href="#tab-3" role="tab">COMENTARIOS</a>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="tab-item-content">
@@ -121,30 +119,11 @@
                                 <div class="product-content">
                                     <div class="row">
                                         <div class="col-lg-7">
-                                            <h5>Introduction</h5>
-                                            <div v-for="items in cart">
-                                                <div v-for="item in items.data">
-                                                    <div v-for="product in item">
-                                                        @{{product.title}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{-- @{{cart}} --}}
-                                            {{-- <li v-for="item in items">
-                                                @{{ item.mensaje }}
-                                              </li> --}}
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                                            <h5>Features</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                            <h5>{{ $product->title }}</h5>
+                                            <p>{{$product->description}}</p>
                                         </div>
                                         <div class="col-lg-5">
-                                            <img src="{{asset('img/product-single/tab-desc.jpg')}}" alt="">
+                                            <img src="{{ asset("/storage/{$product->image}")}}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -153,110 +132,50 @@
                                 <div class="specification-table">
                                     <table>
                                         <tr>
-                                            <td class="p-catagory">Customer Rating</td>
+                                            <td class="p-catagory">Price</td>
                                             <td>
-                                                <div class="pd-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <span>(5)</span>
+                                                <div class="p-price">{{$product->amount}}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-catagory">Disponobles</td>
+                                            <td>
+                                                <div class="p-stock">{{$product->quantity}}</div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="p-catagory">Talla</td>
+                                            <td>
+                                                <div class="p-size">
+                                                    @foreach ($product->sizes as $item)
+                                                    <span> {{$item->name}}</span>
+                                                    @endforeach
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-catagory">Price</td>
+                                            <td class="p-catagory">Marca</td>
                                             <td>
-                                                <div class="p-price">$495.00</div>
+                                                <div class="p-stock">{{$product->brand}}</div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-catagory">Add To Cart</td>
+                                            <td class="p-catagory">Modelo</td>
                                             <td>
-                                                <div class="cart-add">+ add to cart</div>
+                                                <div class="p-code">{{$product->model}}</div>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-catagory">Availability</td>
-                                            <td>
-                                                <div class="p-stock">22 in stock</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-catagory">Weight</td>
-                                            <td>
-                                                <div class="p-weight">1,3kg</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-catagory">Size</td>
-                                            <td>
-                                                <div class="p-size">Xxl</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-catagory">Color</td>
-                                            <td><span class="cs-color"></span></td>
                                         </tr>
                                         <tr>
                                             <td class="p-catagory">Sku</td>
                                             <td>
-                                                <div class="p-code">00012</div>
+                                                <div class="p-code">{{ $product->id}}</div>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="tab-3" role="tabpanel">
-                                <div class="customer-review-option">
-                                    <h4>2 Comments</h4>
-                                    <div class="comment-option">
-                                        <div class="co-item">
-                                            <div class="avatar-pic">
-                                                <img src="{{asset('img/product-single/avatar-1.png')}}" alt="">
-                                            </div>
-                                            <div class="avatar-text">
-                                                <div class="at-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <h5>Brandon Kelley <span>27 Aug 2019</span></h5>
-                                                <div class="at-reply">Nice !</div>
-                                            </div>
-                                        </div>
-                                        <div class="co-item">
-                                            <div class="avatar-pic">
-                                                <img src="{{asset('img/product-single/avatar-2.png')}}" alt="">
-                                            </div>
-                                            <div class="avatar-text">
-                                                <div class="at-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <h5>Roy Banks <span>27 Aug 2019</span></h5>
-                                                <div class="at-reply">Nice !</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="personal-rating">
-                                        <h6>Your Ratind</h6>
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -273,147 +192,41 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Related Products</h2>
+                    <h2>Quienes vieron este producto también compraron</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{asset('img/products/women-1.jpg')}}" alt="">
-                        <div class="sale">Sale</div>
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
+            @foreach ($relations as $item)
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="{{ asset("/storage/{$item->image}")}}" alt="">
+
+                            <ul>
+                                <li class="quick-view"><a href="{{route('page.product', ['id' => $item->id] ) }}">+ Detalles</a></li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Coat</div>
-                        <a href="#">
-                            <h5>Pure Pineapple</h5>
-                        </a>
-                        <div class="product-price">
-                            $14.00
-                            <span>$35.00</span>
+                        <div class="pi-text">
+                            <div class="catagory-name">{{$item->category}}</div>
+                            <a href="{{route('page.product', ['id' => $item->id] ) }}">
+                                <h5>{{$item->title}}</h5>
+                            </a>
+                            <div class="product-price">
+                                ${{$item->amount}}.00
+                                {{-- <span>$35.00</span> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{asset('img/products/women-2.jpg')}}" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Shoes</div>
-                        <a href="#">
-                            <h5>Guangzhou sweater</h5>
-                        </a>
-                        <div class="product-price">
-                            $13.00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{asset('img/products/women-3.jpg')}}" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Towel</div>
-                        <a href="#">
-                            <h5>Pure Pineapple</h5>
-                        </a>
-                        <div class="product-price">
-                            $34.00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{asset('img/products/women-4.jpg')}}" alt="">
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
-                        <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="pi-text">
-                        <div class="catagory-name">Towel</div>
-                        <a href="#">
-                            <h5>Converse Shoes</h5>
-                        </a>
-                        <div class="product-price">
-                            $34.00
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            {{-- 4 productos --}}
         </div>
     </div>
 </div>
 <!-- Related Products Section End -->
 
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{ asset('img/logo-carousel/logo-1.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{ asset('img/logo-carousel/logo-2.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{ asset('img/logo-carousel/logo-3.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{ asset('img/logo-carousel/logo-4.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{ asset('img/logo-carousel/logo-5.png')}}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partner Logo Section End -->
+@include('Pages.chunks.banner-brand')
 
 @endsection
 

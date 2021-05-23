@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{ route('page.index')}}"><i class="fa fa-home"></i> Inicio</a>
-                    <span>Shop</span>
+                    <span>Tienda</span>
                 </div>
             </div>
         </div>
@@ -23,15 +23,14 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                 <div class="filter-widget">
-                    <h4 class="fw-title">Categories</h4>
+                    <h4 class="fw-title">Categorias</h4>
                     <ul class="filter-catagories">
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Kids</a></li>
+                        <li><a href="{{ route('page.shop.caballero')}}">Caballero</a></li>
+                        <li><a href="{{ route('page.shop.dama')}}">Dama</a></li>
                     </ul>
                 </div>
                 <div class="filter-widget">
-                    <h4 class="fw-title">Brand</h4>
+                    <h4 class="fw-title">Marcas</h4>
                     <div class="fw-brand-check">
                         <div class="bc-item">
                             <label for="bc-calvin">
@@ -82,7 +81,7 @@
                     <a href="#" class="filter-btn">Filter</a>
                 </div> --}}
                 <div class="filter-widget">
-                    <h4 class="fw-title">Size</h4>
+                    <h4 class="fw-title">Talla</h4>
                     <div class="fw-size-choose">
                         <div class="sc-item">
                             <input type="radio" id="s-size">
@@ -109,15 +108,20 @@
                         <div class="col-lg-7 col-md-7">
                             <div class="select-option">
                                 <select class="sorting">
-                                    <option value="">Default Sorting</option>
+                                    <option value="">Precio más alto</option>
+                                    <option value="">Precio más bajo</option>
                                 </select>
-                                <select class="p-show">
+                                <select class="sorting">
+                                    <option value="">Más vendidos</option>
+                                    <option value="">Nuevos</option>
+                                </select>
+                                {{-- <select class="p-show">
                                     <option value="">Show:</option>
-                                </select>
+                                </select> --}}
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-5 text-right">
-                            <p>Show 01- 09 Of 36 Product</p>
+                            <p>10 resultados</p>
                         </div>
                     </div>
                 </div>
@@ -147,51 +151,19 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="loading-more">
+                {{-- <div class="loading-more">
                     <i class="icon_loading"></i>
                     <a href="#">
                         Loading More
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 </section>
 <!-- Product Shop Section End -->
 
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partner Logo Section End -->
+@include('Pages.chunks.banner-brand')
 
 
 @endsection

@@ -54,9 +54,12 @@ class ProductAdminController extends Controller
 
         $pathImage = $request['image']->store('upload-product', 'public');
 
+        // dd($pathImage);
+
+        // $img = Image::make($request->file('photo')->getRealPath());
         $img = Image::make(public_path("storage/{$pathImage}"))->fit(440, 520);
         $img->save();
-
+        // dd($img);
         $product = new Product();
         $product->image = $pathImage;
         $product->title = $request->get('title');
@@ -83,7 +86,9 @@ class ProductAdminController extends Controller
     {
         // dd($id->sizes);
 
-        return view('Pages.product', ['product' => $id]);
+        $relations = Product::all()->random(4);
+
+        return view('Pages.product', ['product' => $id], ['relations' => $relations]);
     }
 
     /**

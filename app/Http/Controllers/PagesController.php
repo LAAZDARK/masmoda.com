@@ -14,7 +14,10 @@ class PagesController extends Controller
     public function viewHome()
     {
         $user = Auth::user();
-        return view('Pages.index');
+        $relationsMen = Product::where('category', 'Hombre')->get()->random(4);
+        $relationsWomen = Product::where('category', 'Mujer')->get()->random(4);
+
+        return view('Pages.index', ['relationsMen' => $relationsMen], ['relationsWomen' => $relationsWomen]);
     }
 
     public function viewShopCaballero()
@@ -29,6 +32,12 @@ class PagesController extends Controller
         $product = Product::where('category', 'Mujer')
                             ->orWhere('category', 'Ambos')
                             ->get();
+        return view('Pages.shop', ['product' => $product]);
+    }
+
+    public function viewShop()
+    {
+        $product = Product::all();
         return view('Pages.shop', ['product' => $product]);
     }
 

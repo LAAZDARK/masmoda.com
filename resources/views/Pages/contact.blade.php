@@ -33,7 +33,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Dirección:</span>
-                            <p>Carr, Cuautitlán - Teoloyucan, San Sebastian Xhala, 54714 Cuautitlán Izcalli</p>
+                            <p> <a style=" color:black; " href="https://www.google.com/maps/place/Facultad+de+Estudios+Superiores+Cuautitl%C3%A1n/@19.6919881,-99.1905188,15z/data=!4m2!3m1!1s0x0:0x13d9c1b986e25ecc?sa=X&ved=2ahUKEwi9hIOerODwAhUFMawKHU3RBaIQ_BIwHnoECFUQBQ" target="_blank" rel="noopener noreferrer">Carr, Cuautitlán - Teoloyucan, San Sebastian Xhala, 54714 Cuautitlán Izcalli</a></p>
                         </div>
                     </div>
                     <div class="cw-item">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Telefono:</span>
-                            <p>55 4711 3677</p>
+                            <p> <a style=" color:black; " href="tel:+525547113677"> 55 4711 3677</a></p>
                         </div>
                     </div>
                     <div class="cw-item">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Correo:</span>
-                            <p>contacto@masmoda.com</p>
+                            <p> <a style=" color:black; " href="mailto:contacto@masmoda.com">contacto@masmoda.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -83,38 +83,6 @@
 </section>
 <!-- Contact Section End -->
 
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partner Logo Section End -->
+@include('Pages.chunks.banner-brand')
 
 @endsection

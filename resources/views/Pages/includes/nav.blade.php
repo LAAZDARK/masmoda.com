@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="{{ asset('img/logo.png')}}" alt="">
+                            <a href="{{ route('page.index')}}">
+                                <img width="150px" src="{{ asset('img/masmoda.com-Logo.png')}}" alt="masmoda-logo">
                             </a>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <ul class="nav-right">
                             <div id="cart">
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="{{ route('page.dashboard')}}">
                                     <i class="icon_bag_alt"></i>
                                     <span></span>
                                     <span>@{{count}}</span>
@@ -72,8 +72,8 @@
                                         <h5>$@{{total}}.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="{{ route('page.dashboard')}}" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{ route('page.dashboard')}}" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
                             </li>
@@ -91,8 +91,8 @@
                 <nav class="nav-menu mobile-menu">
                     <ul>
                         <li class="active"><a href="{{ route('page.index')}}">Inicio</a></li>
-                        <li><a href="{{ route('page.shop.caballero')}}">Hombre</a></li>
-                        <li><a href="{{ route('page.shop.dama')}}">Mujer</a></li>
+                        <li><a href="{{ route('page.shop.dama')}}">Dama</a></li>
+                        <li><a href="{{ route('page.shop.caballero')}}">Caballero</a></li>
                         <li><a href="{{ route('page.contact')}}">Contacto</a></li>
                         @if (Auth::check())
                         <li><a href="{{ route('page.dashboard')}}">Dashboard</a></li>

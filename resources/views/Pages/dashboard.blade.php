@@ -39,7 +39,8 @@
                                     <h6>@{{product.title}}</h6>
                                 </div>
                                 <div class="col-3">
-                                    <h6>@{{product.description}}</h6>
+                                    <h6>@{{product.description.substring(0, 80)}}</h6>
+                                    {{-- <h6>{{  \Str::limit(strip_tags(product.description), 100,'...')  }}</h6> --}}
                                 </div>
                                 <div class="col-3">
                                     <p>$@{{product.amount}}.00</p>
@@ -70,40 +71,7 @@
 
 <!-- Shopping Cart Section End -->
 
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<!-- Partner Logo Section End -->
+@include('Pages.chunks.banner-brand')
 
 
 @endsection
