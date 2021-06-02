@@ -14,8 +14,8 @@ class Shopping extends Model
     public $table = "shoppings";
 
     protected $fillable = [
-        'quantity',
-        'color_id',
+        'status',
+        'amount',
         'size_id',
         'product_id',
         'user_id'

@@ -84,7 +84,7 @@ class ProductAdminController extends Controller
      */
     public function viewProduct(Product $id)
     {
-        // dd($id->sizes);
+        // dd($id);
 
         $relations = Product::all()->random(4);
 

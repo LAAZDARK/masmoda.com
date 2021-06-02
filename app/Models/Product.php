@@ -20,12 +20,12 @@ class Product extends Model
         'description',
         'amount',
         'quantity',
-        'color',
         'size',
         'category',
         'brand',
         'model',
         'image',
+        'status'
     ];
 
     // public function colors ()

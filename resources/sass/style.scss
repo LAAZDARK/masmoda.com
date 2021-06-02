@@ -1,14 +1,11 @@
 
 
 $primary-color: #252525;
+$primary-color: #999;
 $secondary-color: #e7ab3c;
 $white-color: #ffffff;
 $heading-color: #252525;
 $para-color: #6e6e6e;
-/*----------------------------------------*/
-
-/* Template default CSS
-/*----------------------------------------*/
 
 html,
 body {
@@ -420,7 +417,7 @@ ol {
 			}
 		}
 		.input-group {
-			max-width: 70%;
+			max-width: 81%;
 			height: 100%;
 			input {
 				width: 100%;
@@ -1367,7 +1364,7 @@ ol {
 -----------------------*/
 
 .partner-logo {
-	background: #303030;
+	background: #b3b3b3;
 	padding: 38px 0;
 }
 

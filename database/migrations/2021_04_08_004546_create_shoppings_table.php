@@ -15,10 +15,11 @@ class CreateShoppingsTable extends Migration
     {
         Schema::create('shoppings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status');
+            $table->unsignedInteger('amount');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('size_id');
-            $table->unsignedInteger('quantity');
             $table->timestamps();
         });
     }

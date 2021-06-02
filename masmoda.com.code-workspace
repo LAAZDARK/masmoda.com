@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+        "todo-tree.tree.scanMode": "workspace",
+        "todo-tree.tree.showBadges": false
+	}
+}

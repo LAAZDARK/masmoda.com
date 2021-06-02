@@ -22,7 +22,13 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.register')}}">
-                        <i class="fas fa-user-tie fa-lg"></i> Administrador
+                        <i class="fas fa-user-tie fa-lg"></i> Agregar Administrador
+                    </a>
+                </li>
+                {{-- TODO: lista de administradores --}}
+                <li>
+                    <a href="{{ route('admin.register')}}">
+                        <i class="fas fa-user-tie fa-lg"></i>Lista de Administradores
                     </a>
                 </li>
                 <li>
