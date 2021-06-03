@@ -1,3 +1,8 @@
+// var numeral = require("numeral");
+
+//   Vue.filter("formatNumber", function (value) {
+//     return numeral(value).format("0,0"); // displaying other groupings/separators is possible, look at the docs
+//   });
 const CartDashboard = {
     data() {
         return {
@@ -27,6 +32,9 @@ const CartDashboard = {
             axios.get(this.$refs.sumProduct.value)
             .then(response => (this.total = response.data.data))
             console.log(this.total);
+        },
+        formatNumber: function(value) {
+            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(value);
         }
     }
 };

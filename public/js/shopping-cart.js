@@ -23,6 +23,7 @@ const ShoppingCartD = {
             console.log(this.form);
 			axios.post(this.$refs.storeCard.value, this.form).then(response => {
                 console.log('Se agrego correctamente');
+                location.reload();
 
 			}).catch(error => {
 				this.errors = 'Corrija para poder crear con éxito'
@@ -36,5 +37,6 @@ const ShoppingCartD = {
         }
     }
 }
+
 
 Vue.createApp(ShoppingCartD).mount("#shopping-cart")

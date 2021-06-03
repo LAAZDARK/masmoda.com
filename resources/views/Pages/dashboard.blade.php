@@ -8,9 +8,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                    <a href="./shop.html">Shop</a>
-                    <span>Shopping Cart</span>
+                    <a href="./home.html"><i class="fa fa-home"></i> Inico</a>
+                    <a href="./shop.html">Tienda</a>
+                    <span>Cesta</span>
                 </div>
             </div>
         </div>
@@ -56,9 +56,9 @@
                     <div class="col-lg-4 offset-lg-4">
                         <div class="proceed-checkout">
                             <ul>
-                                <li class="subtotal">Subtotal <span>$@{{total}}.00</span></li>
-                                <li class="subtotal">IVA <span>$@{{total*.16}}.00</span></li>
-                                <li class="cart-total">Total <span>$@{{total*1.16}}.00</span></li>
+                                <li class="subtotal">Subtotal <span>$@{{total | formatNumber}}.00</span></li>
+                                <li class="subtotal">IVA <span>$@{{total*.16 | formatNumber }}.00</span></li>
+                                <li class="cart-total">Total <span>$@{{total*1.16 | formatNumber}}.00</span></li>
                             </ul>
                             <a href="#" class="proceed-btn">Pagar</a>
                         </div>
