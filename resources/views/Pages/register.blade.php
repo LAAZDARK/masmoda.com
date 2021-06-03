@@ -35,6 +35,10 @@
                             <input type="text" id="email" name="email" required>
                         </div>
                         <div class="group-input">
+                            <label for="address">Direccion de envio *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="group-input">
                             <label for="password">Contraseña *</label>
                             <input type="password" id="password" name="password" required>
                         </div>

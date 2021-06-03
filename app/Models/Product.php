@@ -12,6 +12,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    CONST STATUS_FALSE = false;
+    CONST STATUS_TRUE = true;
+
     public $table = "products";
 
     protected $fillable = [

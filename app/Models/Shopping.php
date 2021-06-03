@@ -13,6 +13,9 @@ class Shopping extends Model
 
     public $table = "shoppings";
 
+    CONST STATUS_SOLD = 'Sold';
+    CONST STATUS_CART = 'Cart';
+
     protected $fillable = [
         'status',
         'amount',

@@ -16,7 +16,7 @@ class PagesController extends Controller
         $user = Auth::user();
         $relationsMen = Product::where('category', 'Hombre')->get()->random(4);
         $relationsWomen = Product::where('category', 'Mujer')->get()->random(4);
-
+        // return view('Pages.index');
         return view('Pages.index', ['relationsMen' => $relationsMen], ['relationsWomen' => $relationsWomen]);
     }
 

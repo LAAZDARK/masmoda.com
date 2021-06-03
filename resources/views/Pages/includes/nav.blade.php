@@ -72,8 +72,8 @@
                                         <h5>$@{{total}}.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="{{ route('page.dashboard')}}" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="{{ route('page.dashboard')}}" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="{{ route('page.dashboard')}}" class="primary-btn view-card">Ir a la cesta</a>
+                                        <a href="{{ route('page.dashboard')}}" class="primary-btn checkout-btn">Pagar</a>
                                     </div>
                                 </div>
                             </li>

@@ -4,8 +4,8 @@ const ShoppingCartD = {
             cart: null,
             form: {
                 'product_id': '',
-                'quantity': 1,
                 'size_id': '',
+                'amount': '',
             },
         };
     },
@@ -16,6 +16,7 @@ const ShoppingCartD = {
         addCart: function() {
             this.form.product_id = this.$refs.product_id.value;
             this.form.size_id = this.$refs.product_size.value;
+            this.form.amount = this.$refs.amount.value;
             this.addProduct();
         },
         addProduct: function() {

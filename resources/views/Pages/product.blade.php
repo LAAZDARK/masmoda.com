@@ -63,6 +63,7 @@
                                     <p>{{$product->description}}</p>
                                     {{-- <h4>$495.00 <span>629.99</span></h4> --}}
                                     <h4>${{$product->amount}}.00</h4>
+                                    <input type="hidden" ref="amount" value="{{$product->amount}}">
                                 </div>
                                 {{-- <div class="pd-size-choose w-25">
                                     <p>Color</p>

@@ -70,17 +70,19 @@ class ShoppingController extends Controller
         $input = $request->all();
         $rules = [
             'product_id' => 'required',
-            'quantity' => 'required',
             'size_id' => 'required',
+            'amount' => 'required'
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) return $this->sendError('Error de validacion', $validator->error()->all(), 422);
 
         $shopping = new Shopping();
-        $shopping->quantity = $request->get('quantity');
+        // $shopping->quantity = $request->get('quantity');
         $shopping->size_id = $request->get('size_id');
         $shopping->user_id = $user->id;
         $shopping->product_id = $request->get('product_id');
+        $shopping->status = Shopping::STATUS_CART;
+        $shopping->amount = $request->get('amount');
         $shopping->save();
 
         return $this->sendResponse('store shopping', 'Se agrego correctamente', 200);
