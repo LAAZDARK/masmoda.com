@@ -22,13 +22,15 @@ class Product extends Model
         'title',
         'description',
         'amount',
-        'quantity',
+        // 'quantity',
         'size',
         'category',
         'brand',
         'model',
         'image',
-        'status'
+        'status',
+        'type',
+        'admin_id'
     ];
 
     // public function colors ()

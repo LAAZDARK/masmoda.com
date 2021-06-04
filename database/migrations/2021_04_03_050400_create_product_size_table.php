@@ -17,6 +17,7 @@ class CreateProductSizeTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('size_id');
+            $table->unsignedInteger('quantity');
             $table->timestamps();
         });
     }

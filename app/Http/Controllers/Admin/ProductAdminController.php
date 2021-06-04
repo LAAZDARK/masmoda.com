@@ -137,7 +137,9 @@ class ProductAdminController extends Controller
         $product->description = $request->get('description');
         $product->save();
 
-        $product->sizes()->attach($request->get('size'));
+        $product->sizes()->attach($request->get('size'), [
+            'quantity' => $request->get('')
+        ]);
 
         return $this->sendResponse($product, 'Se actualizo correctamente', 200);
 

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 // use App\Models\User;
+use App\Models\Admin;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,12 +28,14 @@ class ProductFactory extends Factory
             'title' => $this->faker->word,
             'description' => $this->faker->paragraph,
             'amount' => $this->faker->numberBetween(550, 1600),
-            'quantity' => $this->faker->numberBetween(1, 10),
+            // 'quantity' => $this->faker->numberBetween(1, 10),
             'category' =>  $this->faker->randomElement(['Mujer', 'Hombre']),
             'brand' => $this->faker->randomElement(['Adidas', 'Polo', 'Andrea', 'Zara', 'Gucci']),
             'model' => Str::random(5),
             'image' => 'upload-product/pIgNvWQMG8OIQMEMYX9xP0DGGzKwPE9tiiS9rNHq.jpg',
-            'status' => $this->faker->randomElement([Product::STATUS_TRUE, Product::STATUS_FALSE])
+            'status' => $this->faker->randomElement([Product::STATUS_TRUE, Product::STATUS_FALSE]),
+            'type' =>  $this->faker->randomElement(['Playera', 'Pantalon', 'Blusa', 'Sudadera', 'Vestido']),
+            'admin_id' => Admin::all()->random()->id
         ];
     }
 

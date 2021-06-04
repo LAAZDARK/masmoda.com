@@ -18,12 +18,13 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->float('amount')->nullable();
-            $table->integer('quantity')->nullable();
             $table->string('category')->nullable();
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
             $table->string('image')->nullable();
-            $table->string('status')->nullable();
+            $table->boolean('status')->nullable();
+            $table->string('type')->nullable();
+            $table->unsignedInteger('admin_id')->nullable();
             $table->timestamps();
         });
     }
