@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use App\Models\Size;
-// use App\Models\Color;
-// use App\Models\Shopping;
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,7 +21,6 @@ class Product extends Model
         'title',
         'description',
         'amount',
-        // 'quantity',
         'size',
         'category',
         'brand',
@@ -33,14 +31,14 @@ class Product extends Model
         'admin_id'
     ];
 
-    // public function colors ()
-    // {
-    //     return $this->belongsToMany(Color::class);
-    // }
+    public function admin ()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 
     public function sizes ()
     {
-        return $this->belongsToMany(Size::class);
+        return $this->belongsToMany(Size::class, 'product_size')->wherePivot('product_id', 'size_id','quantity');
     }
 
     // public function shoppings ()

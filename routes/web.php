@@ -63,7 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get("/login", [PagesAdminController::class, "viewLogin"])->name('login');
     Route::post("/login", [AuthAdminController::class, "login"])->name('post.login');
 
-    // Route::middleware('auth:admin')->group(function () {
+    Route::middleware('auth:admin')->group(function () {
         Route::get("/", [PagesAdminController::class, "viewHome"])->name('home');
         Route::get("/producto", [PagesAdminController::class, "viewProduct"])->name('product');
         Route::get("/registro", [PagesAdminController::class, "viewRegister"])->name('register');
@@ -81,7 +81,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/product', ProductAdminController::class, ['except' => [
             'create', 'edit'
         ]]);
-    // });
+    });
 
 });
 

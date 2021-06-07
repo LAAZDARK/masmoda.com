@@ -25,32 +25,32 @@
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <input type="text" name="title" placeholder="Titulo">
+                                            <input type="text" name="title" value="Test Pantalon" placeholder="Titulo">
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" name="amount" placeholder="Precio">
+                                            <input type="text" name="amount" value="1888" placeholder="Precio">
                                         </div>
                                         <div class="col-lg-6">
                                             <select class="select-product" name="type">
                                                 <option value="Playera">Playera</option>
                                                 <option value="Blusa">Blusa</option>
-                                                <option value="Pantalon">Pantalon</option>
+                                                <option value="Pantalon" selected>Pantalon</option>
                                                 <option value="Vestido">Vestido</option>
                                                 <option value="Sudadera">Sudadera</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" name="model" placeholder="Modelo">
+                                            <input type="text" name="model" value="123d1s3df" placeholder="Modelo">
                                         </div>
                                         <div class="col-lg-6">
                                             <select class="select-product" name="category">
                                                 <option value="Mujer">Mujer</option>
-                                                <option value="Hombre">Hombre</option>
+                                                <option value="Hombre" selected>Hombre</option>
                                                 <option value="Ambos">Ambos</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" name="brand" placeholder="Marca">
+                                            <input type="text" name="brand" value="Adidas" placeholder="Marca">
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="filter-widget">
@@ -88,11 +88,11 @@
                                         <div class="col-lg-12">
                                             <label for="image">
                                                 Imagen
-                                                <input type="file"  name="image" id="image" required>
+                                                <input type="file"  name="image" id="image">
                                             </label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <textarea name="description" placeholder="Describir prenda"></textarea>
+                                            <textarea name="description" placeholder="Describir prenda">test Descripcion</textarea>
                                             <button type="submit" class="site-btn">Publicar</button>
                                         </div>
                                     </div>

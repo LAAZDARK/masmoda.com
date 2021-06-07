@@ -60,6 +60,7 @@ class AuthAdminController extends Controller
 
             if (Auth::guard('admin')->attempt($credentials)) {
                 $user = Auth::guard('admin')->user();
+                // dd($user);
                 return redirect()->intended(route("admin.home"));
             }
 

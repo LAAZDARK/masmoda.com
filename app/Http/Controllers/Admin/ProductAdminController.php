@@ -8,6 +8,7 @@ use App\Traits\ResponseApi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,11 +44,11 @@ class ProductAdminController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $input = $request->all();
-        // dd($input);
         $rules = [
             'title' => 'required',
-            // 'category' => 'required',
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) return $this->sendError('Error de validacion', $validator->error()->all(), 422);
@@ -59,17 +60,39 @@ class ProductAdminController extends Controller
         $img->save();
         $product = new Product();
         $product->image = $pathImage;
+        $product->type = $request->get('type');
         $product->title = $request->get('title');
         $product->brand = $request->get('brand');
         $product->model = $request->get('model');
         $product->amount = $request->get('amount');
-        $product->quantity = $request->get('quantity');
         $product->category = $request->get('category');
         $product->description = $request->get('description');
         $product->status = Product::STATUS_TRUE;
         $product->save();
 
-        $product->sizes()->attach($request->get('size'));
+        $quantity = $request->quantity;
+
+
+        foreach($quantity as $key => $value)
+        {
+            if($value === null)
+            {
+                unset($quantity[$key]);
+            }
+        }
+
+        $quantity = array_merge($quantity);
+        $size = $request->size;
+
+        foreach ($size as $key => $value) {
+            $product->sizes()->attach($size[$key], ['quantity' => $quantity[$key]]);
+        }
+
+        $admin = $request->user();
+
+        $admin->products()->save($product);
+
+
 
         return back()->with('flash', 'Se guardo correctamente el producto');
     }
@@ -109,9 +132,9 @@ class ProductAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pathImage='';
+        // $pathImage='';
         $input = $request->all();
-        // dd($input);
+        dd($input);
         $rules = [
             'title' => 'required',
             // 'category' => 'required',
@@ -119,15 +142,10 @@ class ProductAdminController extends Controller
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) return $this->sendError('Error de validacion', $validator->error()->all(), 422);
 
-        // if ($request['image']) {
-        //     $pathImage = $request['image']->store('upload-product', 'public');
 
-        //     $img = Image::make(public_path("storage/{$pathImage}"))->fit(440, 520);
-        //     $img->save();
-        // }
 
         $product = Product::findOrFail($id);
-        $product->image = $pathImage;
+        // $product->image = $pathImage;
         $product->title = $request->get('title');
         $product->brand = $request->get('brand');
         $product->model = $request->get('model');
