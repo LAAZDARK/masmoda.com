@@ -28,7 +28,6 @@ class ProductFactory extends Factory
             'title' => $this->faker->word,
             'description' => $this->faker->paragraph,
             'amount' => $this->faker->numberBetween(550, 1600),
-            // 'quantity' => $this->faker->numberBetween(1, 10),
             'category' =>  $this->faker->randomElement(['Mujer', 'Hombre']),
             'brand' => $this->faker->randomElement(['Adidas', 'Polo', 'Andrea', 'Zara', 'Gucci']),
             'model' => Str::random(5),

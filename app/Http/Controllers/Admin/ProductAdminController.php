@@ -23,6 +23,8 @@ class ProductAdminController extends Controller
     public function index()
     {
         $product = Product::all();
+        // $product = Product::has('sizes')->with('sizes')->get();
+        // dd($product);
         return $this->sendResponse($product, 'Usuario no autenticado', 200);
     }
 
@@ -132,12 +134,11 @@ class ProductAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $pathImage='';
+
         $input = $request->all();
-        dd($input);
+
         $rules = [
             'title' => 'required',
-            // 'category' => 'required',
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) return $this->sendError('Error de validacion', $validator->error()->all(), 422);
@@ -145,19 +146,38 @@ class ProductAdminController extends Controller
 
 
         $product = Product::findOrFail($id);
-        // $product->image = $pathImage;
+        $product->type = $request->get('type');
         $product->title = $request->get('title');
         $product->brand = $request->get('brand');
         $product->model = $request->get('model');
         $product->amount = $request->get('amount');
-        $product->quantity = $request->get('quantity');
         $product->category = $request->get('category');
         $product->description = $request->get('description');
+        $product->status = Product::STATUS_TRUE;
         $product->save();
 
-        $product->sizes()->attach($request->get('size'), [
-            'quantity' => $request->get('')
-        ]);
+        $quantity = $request->quantity;
+        $size = $request->size;
+
+        dd($size);
+
+        foreach($quantity as $key => $value)
+        {
+            if($value === null)
+            {
+                unset($quantity[$key]);
+            }
+        }
+
+        $quantity = array_merge($quantity);
+
+        foreach ($size as $key => $value) {
+            $product->sizes()->attach($size[$key], ['quantity' => $quantity[$key]]);
+        }
+
+        $admin = $request->user();
+
+        $admin->products()->save($product);
 
         return $this->sendResponse($product, 'Se actualizo correctamente', 200);
 

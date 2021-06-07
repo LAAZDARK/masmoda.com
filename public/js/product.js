@@ -11,6 +11,8 @@ const ProductManager = {
                 'category': '',
                 'brand': '',
                 'model': '',
+                'type': '',
+                'quantity': ''
             }
         };
     },
@@ -31,6 +33,7 @@ const ProductManager = {
             this.fillProduct.category = item.category;
             this.fillProduct.brand = item.brand;
             this.fillProduct.model = item.model;
+            this.fillProduct.type = item.type;
 			$('#edit').modal('show');
 		},
         updateProduct: function(id) {

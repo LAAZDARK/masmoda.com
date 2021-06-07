@@ -28,6 +28,7 @@
                             <input type="checkbox" value="1" name="size[]" id="s" v-model="fillProduct.size">
                             <span class="checkmark"></span>
                         </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" name="quantity[]" id="s" v-model="fillProduct.quantity">
                         <label for="m">
                             M
                             <input type="checkbox" value="2" name="size[]" id="m" v-model="fillProduct.size">
@@ -50,6 +51,16 @@
                             <option value="Mujer">Mujer</option>
                             <option value="Hombre">Hombre</option>
                             <option value="Ambos">Ambos</option>
+                        </select>
+                    </div>
+                    <div class="w-100">
+                    <label for="category">Tipo</label>
+                        <select class="select-product" name="type" v-model="fillProduct.type">
+                            <option value="Playera">Playera</option>
+                            <option value="Blusa">Blusa</option>
+                            <option value="Pantalon" selected>Pantalon</option>
+                            <option value="Vestido">Vestido</option>
+                            <option value="Sudadera">Sudadera</option>
                         </select>
                     </div>
                     {{-- <label for="image">Imagen</label>

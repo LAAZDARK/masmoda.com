@@ -21,6 +21,7 @@
                             <th>Imagen</th>
                             <th>Titulo</th>
                             <th>Catagoria</th>
+                            <th>Tipo</th>
                             <th>Marca</th>
                             <th>Precio</th>
                             <th colspan="2">
@@ -34,6 +35,7 @@
                             <td><img :src="'/storage/'+ item.image " width="40" height="50" alt="Imagen de producto"></td>
                             <td>@{{ item.title }}</td>
                             <td>@{{ item.category }}</td>
+                            <td>@{{ item.type }}</td>
                             <td>@{{ item.brand }}</td>
                             <td>@{{ item.amount }}</td>
                             <td width="10px">
