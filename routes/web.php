@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\PagesAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
@@ -70,14 +71,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post("/register", [AuthAdminController::class, "register"])->name('post.register');
         Route::get("/logout", [AuthAdminController::class, "logout"])->name('logout');
         Route::get("/usuarios", [PagesAdminController::class, "viewUser"])->name('user.views');
+        Route::get("/lista", [PagesAdminController::class, "viewAdmin"])->name('views');
 
         Route::resource('/user', UserController::class, ['except' => [
             'create', 'edit'
         ]])->names('user');
-        // Route::get("/user", [UserController::class, "index"])->name('user.index');
-        // Route::put("/user/{id}", [UserController::class, "destroy"])->name('user.destroy');
+        Route::get("/list", [AdminController::class, "index"])->name('list');
 
-        // resource
         Route::resource('/product', ProductAdminController::class, ['except' => [
             'create', 'edit'
         ]]);

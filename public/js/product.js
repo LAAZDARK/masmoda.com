@@ -2,6 +2,12 @@ const ProductManager = {
     data() {
         return {
             product: null,
+            quantitys: {
+                'quantity1': '5',
+                'quantity2': '7',
+                'quantity3': '6',
+                'quantity4': '9',
+            },
             fillProduct: {
                 'id': '',
                 'title': '',
@@ -12,7 +18,7 @@ const ProductManager = {
                 'brand': '',
                 'model': '',
                 'type': '',
-                'quantity': ''
+                'quantity': []
             }
         };
     },
@@ -36,11 +42,11 @@ const ProductManager = {
             this.fillProduct.type = item.type;
 			$('#edit').modal('show');
 		},
-        updateProduct: function(id) {
-			axios.put(this.$refs.getProduct.value + '/' + id, this.fillProduct).then(response => {
+        updateProduct: function() {
+			axios.put(this.$refs.getProduct.value + '/' + this.fillProduct.id, this.fillProduct).then(response => {
 				$('#edit').modal('hide');
                 this.getProduct();
-				// toastr.success('Tarea actualizada con éxito');
+                this.handleClear();
 			}).catch(error => {
 				this.errors = 'Corrija para poder editar con éxito'
 			});
@@ -50,6 +56,26 @@ const ProductManager = {
 				this.getProduct();
 			});
 		},
+        addQuantity() {
+            this.fillProduct.quantity.push(
+                this.quantitys.quantity1,
+                this.quantitys.quantity2,
+                this.quantitys.quantity3,
+                this.quantitys.quantity4
+            )
+            this.updateProduct()
+        },
+        handleClear() {
+            this.fillProduct.id = '',
+            this.fillProduct.title = '',
+            this.fillProduct.amount = '',
+            this.fillProduct.description = '',
+            this.fillProduct.category = '',
+            this.fillProduct.brand = '',
+            this.fillProduct.model = '',
+            this.fillProduct.type = '',
+            this.fillProduct.quantity = ''
+        }
     }
 };
 

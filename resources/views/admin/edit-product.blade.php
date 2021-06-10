@@ -1,4 +1,5 @@
-<form method="POST" enctype="multipart/form-data" v-on:submit.prevent="updateProduct(fillProduct.id)">
+{{-- <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="updateProduct(fillProduct.id)"> --}}
+    <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="addQuantity">
     <div class="modal fade" id="edit">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -21,31 +22,60 @@
                     <label for="brand">Marca</label>
                         <input type="text" name="brand" class="form-control" v-model="fillProduct.brand">
                     <span v-for="error in errors" class="text-danger">@{{ error }}</span>
-                    <label for="brand">Talla</label>
-                    <div class="bc-item">
-                        <label for="s">
-                            S
-                            <input type="checkbox" value="1" name="size[]" id="s" v-model="fillProduct.size">
-                            <span class="checkmark"></span>
-                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="number" name="quantity[]" id="s" v-model="fillProduct.quantity">
-                        <label for="m">
-                            M
-                            <input type="checkbox" value="2" name="size[]" id="m" v-model="fillProduct.size">
-                            <span class="checkmark"></span>
-                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="l">
-                            L
-                            <input type="checkbox" value="3" name="size[]" id="l" v-model="fillProduct.size">
-                            <span class="checkmark"></span>
-                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="xl">
-                            XL
-                            <input type="checkbox" value="4" name="size[]" id="xl" v-model="fillProduct.size">
-                            <span class="checkmark"></span>
-                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="row">
+                        <div class="col-md-4 text-center mt-3">
+                            <label for="brand">Talla</label>
+                        </div>
+                        <div class="col-md-4 text-center mt-3">
+                            <label for="brand">Cantidad</label>
+                        </div>
                     </div>
-                    <div class="w-100">
+                    <div class="bc-item">
+                        <div class="row">
+                            <div class="col-md-4 text-right">
+                                <label for="s">
+                                    Small
+                                    <input type="checkbox" value="1" name="size[]" id="s" v-model="fillProduct.size">
+                                    <span class="checkmark"></span>
+                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" name="quantity1" id="s" v-model="quantitys.quantity1">
+                            </div>
+
+                            <div class="col-md-4 text-right">
+                                <label for="m">
+                                    Medium
+                                    <input type="checkbox" value="2" name="size[]" id="m" v-model="fillProduct.size">
+                                    <span class="checkmark"></span>
+                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" name="quantity2" id="s" v-model="quantitys.quantity2"><br>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <label for="l">
+                                    Large
+                                    <input type="checkbox" value="3" name="size[]" id="l" v-model="fillProduct.size">
+                                    <span class="checkmark"></span>
+                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" name="quantity3" id="s" v-model="quantitys.quantity3"><br>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <label for="xl">
+                                    Extra Largue
+                                    <input type="checkbox" value="4" name="size[]" id="xl" v-model="fillProduct.size">
+                                    <span class="checkmark"></span>
+                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" name="quantity4" id="s" v-model="quantitys.quantity4"><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 mt-3">
                     <label for="category">Categoria</label>
                         <select class="select-product" name="category" v-model="fillProduct.category">
                             <option value="Mujer">Mujer</option>

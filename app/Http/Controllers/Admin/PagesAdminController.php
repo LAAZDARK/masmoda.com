@@ -27,6 +27,10 @@ class PagesAdminController extends Controller
     {
         return view('admin.user');
     }
+    public function viewAdmin()
+    {
+        return view('admin.admin');
+    }
 
     public function viewRegister()
     {

@@ -27,13 +27,13 @@
                 </li>
                 {{-- TODO: lista de administradores --}}
                 <li>
-                    <a href="{{ route('admin.register')}}">
-                        <i class="fas fa-user-tie fa-lg"></i>Lista de Administradores
+                    <a href="{{ route('admin.views')}}">
+                        <i class="fas fa-user-shield fa-lg"></i> Lista de Administradores
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.logout')}}">
-                        <i class="fas fa-user-tie fa-lg"></i> Cerrar sesion
+                        <i class="fas fa-sign-out-alt fa-lg"></i> Cerrar sesion
                     </a>
                 </li>
             </ul>

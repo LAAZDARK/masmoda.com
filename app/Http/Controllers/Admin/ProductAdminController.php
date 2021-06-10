@@ -136,7 +136,7 @@ class ProductAdminController extends Controller
     {
 
         $input = $request->all();
-
+        // dd($input);
         $rules = [
             'title' => 'required',
         ];
@@ -159,7 +159,7 @@ class ProductAdminController extends Controller
         $quantity = $request->quantity;
         $size = $request->size;
 
-        dd($size);
+        // dd($size);
 
         foreach($quantity as $key => $value)
         {
@@ -170,6 +170,8 @@ class ProductAdminController extends Controller
         }
 
         $quantity = array_merge($quantity);
+
+
 
         foreach ($size as $key => $value) {
             $product->sizes()->attach($size[$key], ['quantity' => $quantity[$key]]);
