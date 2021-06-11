@@ -75,7 +75,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #fff;
+	color: rgb(54, 54, 54);
 }
 
 ul,
@@ -4161,4 +4161,21 @@ body {
 // Producto
 .customer-review-option {
     padding-top: 0px !important;
+}
+
+
+.list-filter > button {
+    display:inline;
+    padding-left:5px !important;
+    padding-right:5px !important;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+.list-filter > button:hover {
+    color: #2773BE;
 }

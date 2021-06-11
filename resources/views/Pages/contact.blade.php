@@ -19,6 +19,8 @@
 
 <!-- Contact Section Begin -->
 <section class="contact-section spad">
+    <div id="contact">
+        <input type="hidden" ref="storeContact" value="{{ route('page.contact.store') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
@@ -60,17 +62,26 @@
                 <div class="contact-form">
                     <div class="leave-comment">
                         <h4>Escribenos</h4>
+                        <div v-if="send">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>@{{send}}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
                         <p>En breve un nos pondremos en contacto contigo.</p>
-                        <form action="#" class="comment-form">
+                        <form method="POST"  v-on:submit.prevent="store" class="comment-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="name" placeholder="Nombre">
+                                    <input type="text" name="name" v-model="form.name" placeholder="Nombre" required>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" name="email" placeholder="Correo electrónico">
+                                    <input type="email" name="email" v-model="form.email" placeholder="Correo electrónico" required>
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea placeholder="Mensaje" name="message"></textarea>
+                                    <textarea placeholder="Mensaje" name="message" v-model="form.message" required></textarea>
                                     <button type="submit" class="site-btn">Enviar</button>
                                 </div>
                             </div>
@@ -80,9 +91,14 @@
             </div>
         </div>
     </div>
+    </div>
 </section>
 <!-- Contact Section End -->
 
 @include('Pages.chunks.banner-brand')
 
 @endsection
+
+@push('js-script')
+    <script src="{{asset('js/contact.js')}}"></script>
+@endpush

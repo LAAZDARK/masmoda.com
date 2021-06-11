@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Contact;
 // use App\Models\Shopping;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -25,20 +30,29 @@ class PagesController extends Controller
         $product = Product::where('category', 'Hombre')
                             ->orWhere('category', 'Ambos')
                             ->get();
-        return view('Pages.shop', ['product' => $product]);
+
+        $brands = Product::select('brand')->groupBy('brand')->get();
+
+        return view('Pages.shop', ['product' => $product], ['brands' => $brands]);
     }
     public function viewShopDama()
     {
         $product = Product::where('category', 'Mujer')
                             ->orWhere('category', 'Ambos')
                             ->get();
-        return view('Pages.shop', ['product' => $product]);
+
+        $brands = Product::select('brand')->groupBy('brand')->get();
+
+        return view('Pages.shop', ['product' => $product], ['brands' => $brands]);
     }
 
     public function viewShop()
     {
         $product = Product::all();
-        return view('Pages.shop', ['product' => $product]);
+
+        $brands = Product::select('brand')->groupBy('brand')->get();
+
+        return view('Pages.shop', ['product' => $product], ['brands' => $brands]);
     }
 
     public function viewDashboard()
@@ -46,10 +60,7 @@ class PagesController extends Controller
         return view('Pages.dashboard');
     }
 
-    public function viewContact()
-    {
-        return view('Pages.contact');
-    }
+
 
     public function viewRegister()
     {
@@ -59,5 +70,32 @@ class PagesController extends Controller
     public function viewLogin()
     {
         return view('Pages.login');
+    }
+
+    public function viewContact()
+    {
+        return view('Pages.contact');
+    }
+
+    public function storeContact(Request $request)
+    {
+        $input = $request->all();
+
+        $rules = array(
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) return $this->sendError('Validator', $validator->errors()->all(), 422);
+
+        $contact = new Contact();
+        $contact->fill($input);
+        $contact->save();
+
+        Mail::to('laazfull@gmail.com')->send(new ContactMail($contact));
+
+
+        return 'Mensaje enviado';
     }
 }

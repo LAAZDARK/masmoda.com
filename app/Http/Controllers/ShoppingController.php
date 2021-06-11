@@ -17,6 +17,16 @@ class ShoppingController extends Controller
 {
     use ResponseApi;
 
+
+    public function getShop() {
+
+        $product = Product::all();
+
+        dd($product);
+
+        return $this->sendResponse($product, 'Lista de todos los productos');
+    }
+
     public function index()
     {
         if (Auth::check()) {

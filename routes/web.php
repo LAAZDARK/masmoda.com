@@ -38,12 +38,16 @@ Route::name('page.')->group(function () {
     Route::get("/caballero", [PagesController::class, "viewShopCaballero"])->name('shop.caballero');
     Route::get("/dama", [PagesController::class, "viewShopDama"])->name('shop.dama');
     Route::get("/todo", [PagesController::class, "viewShop"])->name('shop.all');
+    // Route::get("/small", [PagesController::class, "viewShopSmall"])->name('shop.small');
+
     Route::get("/contacto", [PagesController::class, "viewContact"])->name('contact');
+    Route::post("/contact", [PagesController::class, "storeContact"])->name('contact.store');
     Route::get("/registro", [PagesController::class, "viewRegister"])->name('register');
     Route::get("/dashboard", [PagesController::class, "viewDashboard"])->name('dashboard');
     Route::get("/login", [PagesController::class, "viewLogin"])->name('login');
     Route::get("/detalles/{id}", [ProductAdminController::class, "viewProduct"])->name('product');
-    // Route::get("/dashboard", [PagesController::class, "viewDashboard"])->name('dashboard');
+
+    // Route::get("/list-all", [ShoppingController::class, "getShop"])->name('list.all');
 
 });
 
