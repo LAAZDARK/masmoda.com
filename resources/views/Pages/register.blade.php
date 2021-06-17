@@ -35,6 +35,13 @@
                             <input type="text" id="email" name="email" required>
                         </div>
                         <div class="group-input">
+                            <select class="select-product" name="gender">
+                                <option value="Mujer">Mujer</option>
+                                <option value="Hombre" selected>Hombre</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="group-input">
                             <label for="address">Direccion de envio *</label>
                             <input type="text" id="address" name="address" required>
                         </div>

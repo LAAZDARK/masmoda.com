@@ -53,37 +53,23 @@
                                             <input type="text" name="brand" value="Adidas" placeholder="Marca">
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="filter-widget">
-                                                <h4 class="fw-title">Tallas</h4>
-                                                <div class="fw-brand-check">
-                                                    <div class="bc-item">
-                                                        @foreach ($size as $item )
-                                                            <label for="{{$item->name}}">
-                                                                {{$item->name}}
-                                                                <input type="checkbox" value="{{$item->id}}" name="size[]" id="{{$item->name}}">
-                                                                <span class="checkmark"></span>
-                                                            </label>
-                                                            <input type="number" name="quantity[]" placeholder="Cantidad">
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <label for="small">Small
+                                                <input type="number" name="small_size" value="4" placeholder="cantidad">
+                                            </label>
                                         </div>
                                         <div class="col-lg-6">
-                                            {{-- <div class="filter-widget">
-                                                <h4 class="fw-title">Color</h4>
-                                                <div class="fw-brand-check">
-                                                    <div class="bc-item">
-                                                        @foreach ($color as $item)
-                                                        <label for="{{$item->name}}">
-                                                            {{$item->name}}
-                                                            <input type="checkbox" value="{{$item->id}}" name="color[]" id="{{$item->name}}">
-                                                            <span class="checkmark"></span>
-                                                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div> --}}
+                                            <label for="medium">Medium
+                                                <input type="number" name="medium_size" value="4" placeholder="cantidad">
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="large">Large</label>
+                                                <input type="number" name="large_size" value="4" placeholder="cantidad">
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="extra_large">Extra Large</label>
+                                            <input type="number" name="extra_large_size" value="" placeholder="cantidad">
                                         </div>
                                         <div class="col-lg-12">
                                             <label for="image">

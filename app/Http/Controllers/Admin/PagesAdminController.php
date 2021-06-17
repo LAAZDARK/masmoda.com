@@ -16,10 +16,7 @@ class PagesAdminController extends Controller
 
     public function viewProduct()
     {
-
-        $size = Size::all();
-
-        return view('admin.product', ['size' => $size]);
+        return view('admin.product');
     }
 
 

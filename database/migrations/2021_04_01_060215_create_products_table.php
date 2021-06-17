@@ -24,6 +24,10 @@ class CreateProductsTable extends Migration
             $table->string('image')->nullable();
             $table->boolean('status')->nullable();
             $table->string('type')->nullable();
+            $table->unsignedInteger('small_size')->nullable();
+            $table->unsignedInteger('medium_size')->nullable();
+            $table->unsignedInteger('large_size')->nullable();
+            $table->unsignedInteger('extra_large_size')->nullable();
             $table->unsignedInteger('admin_id')->nullable();
             $table->timestamps();
         });

@@ -65,20 +65,27 @@
                                     <h4>${{$product->amount}}.00</h4>
                                     <input type="hidden" ref="amount" value="{{$product->amount}}">
                                 </div>
-                                {{-- <div class="pd-size-choose w-25">
-                                    <p>Color</p>
-                                    <select class="select-product" ref="product_color" name="color">
-                                        @foreach ($product->colors as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div> --}}
+                                <div class="pd-desc">
+                                    <h5>Disponibles</h5>
+                                    <p>Small: {{$product->small_size}}</p>
+                                </div>
                                 <div class="pd-size-choose  w-25">
                                     <p>Talla</p>
                                         <select class="select-product" ref="product_size" name="size">
-                                            @foreach ($product->sizes as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                            @endforeach
+
+                                            @if($product->small_size)
+                                                <option value="1">Small</option>
+                                            @endif
+                                            @if($product->medium_size)
+                                                <option value="1">Medium</option>
+                                            @endif
+                                            @if($product->large_size)
+                                                <option value="1">Large</option>
+                                            @endif
+                                            @if($product->extra_large_size)
+                                                <option value="1">Extra Large</option>
+                                            @endif
+
                                         </select>
                                 </div>
                                     <div class="quantity">
@@ -139,9 +146,13 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-catagory">Disponobles</td>
+                                            <td class="p-catagory">Disponoble</td>
                                             <td>
-                                                <div class="p-stock">{{$product->quantity}}</div>
+                                                @if($product->small_size)
+                                                    <span class="p-stock">Si</span>
+                                                @else
+                                                    <span class="p-stock">No</span>
+                                                @endif
                                             </td>
                                         </tr>
 
@@ -149,9 +160,21 @@
                                             <td class="p-catagory">Talla</td>
                                             <td>
                                                 <div class="p-size">
-                                                    @foreach ($product->sizes as $item)
+                                                    @if($product->small_size)
+                                                        <span value="1">Small - </span>
+                                                    @endif
+                                                    @if($product->medium_size)
+                                                        <span value="1">Medium - </span>
+                                                    @endif
+                                                    @if($product->large_size)
+                                                        <span value="1">Large - </span>
+                                                    @endif
+                                                    @if($product->extra_large_size)
+                                                        <span value="1">Extra Large</span>
+                                                    @endif
+                                                    {{-- @foreach ($product->sizes as $item)
                                                     <span> {{$item->name}}</span>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </div>
                                             </td>
                                         </tr>

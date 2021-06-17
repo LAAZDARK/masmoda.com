@@ -28,15 +28,6 @@ class ProductAdminController extends Controller
         return $this->sendResponse($product, 'Usuario no autenticado', 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -62,33 +53,20 @@ class ProductAdminController extends Controller
         $img->save();
         $product = new Product();
         $product->image = $pathImage;
-        $product->type = $request->get('type');
-        $product->title = $request->get('title');
-        $product->brand = $request->get('brand');
-        $product->model = $request->get('model');
-        $product->amount = $request->get('amount');
-        $product->category = $request->get('category');
-        $product->description = $request->get('description');
+        $product->type = $request->input('type');
+        $product->title = $request->input('title');
+        $product->brand = $request->input('brand');
+        $product->model = $request->input('model');
+        $product->amount = $request->input('amount');
+        $product->category = $request->input('category');
+        $product->description = $request->input('description');
+        $product->small_size = $request->input('small_size');
+        $product->medium_size = $request->input('medium_size');
+        $product->large_size = $request->input('large_size');
+        $product->extra_large_size = $request->input('extra_large_size');
         $product->status = Product::STATUS_TRUE;
         $product->save();
 
-        $quantity = $request->quantity;
-
-
-        foreach($quantity as $key => $value)
-        {
-            if($value === null)
-            {
-                unset($quantity[$key]);
-            }
-        }
-
-        $quantity = array_merge($quantity);
-        $size = $request->size;
-
-        foreach ($size as $key => $value) {
-            $product->sizes()->attach($size[$key], ['quantity' => $quantity[$key]]);
-        }
 
         $admin = $request->user();
 
@@ -105,25 +83,16 @@ class ProductAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function viewProduct(Product $id)
+    public function viewProduct($id)
     {
-        // dd($id);
-
+        $product = Product::findOrFail($id);
+        // dd($product);
         $relations = Product::all()->random(4);
 
-        return view('Pages.product', ['product' => $id], ['relations' => $relations]);
+        return view('Pages.product', ['product' => $product], ['relations' => $relations]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -153,29 +122,14 @@ class ProductAdminController extends Controller
         $product->amount = $request->get('amount');
         $product->category = $request->get('category');
         $product->description = $request->get('description');
+        $product->small_size = $request->input('small_size');
+        $product->medium_size = $request->input('medium_size');
+        $product->large_size = $request->input('large_size');
+        $product->extra_large_size = $request->input('extra_large_size');
         $product->status = Product::STATUS_TRUE;
         $product->save();
 
-        $quantity = $request->quantity;
-        $size = $request->size;
 
-        // dd($size);
-
-        foreach($quantity as $key => $value)
-        {
-            if($value === null)
-            {
-                unset($quantity[$key]);
-            }
-        }
-
-        $quantity = array_merge($quantity);
-
-
-
-        foreach ($size as $key => $value) {
-            $product->sizes()->attach($size[$key], ['quantity' => $quantity[$key]]);
-        }
 
         $admin = $request->user();
 
