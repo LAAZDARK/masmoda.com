@@ -4,27 +4,27 @@
         <div class="logo-carousel owl-carousel">
             <div class="logo-item">
                 <div class="tablecell-inner">
-                    <img src="img/logo-carousel/adi.png" alt="">
+                    <img src="{{ asset('img/logo-carousel/adi.png')}} " alt="Audi">
                 </div>
             </div>
             <div class="logo-item">
                 <div class="tablecell-inner">
-                    <img src="img/logo-carousel/cal.png" alt="">
+                    <img src="{{ asset('img/logo-carousel/cal.png')}} " alt="cal">
                 </div>
             </div>
             <div class="logo-item">
                 <div class="tablecell-inner">
-                    <img src="img/logo-carousel/gucci.png" alt="">
+                    <img src=" {{ asset('img/logo-carousel/gucci.png')}}" alt="gucci">
                 </div>
             </div>
             <div class="logo-item">
                 <div class="tablecell-inner">
-                    <img src="img/logo-carousel/zara.png" alt="">
+                    <img src=" {{ asset('img/logo-carousel/zara.png')}}" alt="zara">
                 </div>
             </div>
             <div class="logo-item">
                 <div class="tablecell-inner">
-                    <img src="img/logo-carousel/puma.png" alt="">
+                    <img src=" {{ asset('img/logo-carousel/puma.png')}}" alt="puma">
                 </div>
             </div>
         </div>

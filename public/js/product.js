@@ -2,23 +2,19 @@ const ProductManager = {
     data() {
         return {
             product: null,
-            quantitys: {
-                'quantity1': '5',
-                'quantity2': '7',
-                'quantity3': '6',
-                'quantity4': '9',
-            },
             fillProduct: {
                 'id': '',
                 'title': '',
                 'amount': '',
                 'description': '',
-                'size': [],
                 'category': '',
                 'brand': '',
                 'model': '',
                 'type': '',
-                'quantity': []
+                'small_size': '',
+                'medium_size': '',
+                'large_size': '',
+                'extra_large_size': ''
             }
         };
     },
@@ -56,15 +52,6 @@ const ProductManager = {
 				this.getProduct();
 			});
 		},
-        addQuantity() {
-            this.fillProduct.quantity.push(
-                this.quantitys.quantity1,
-                this.quantitys.quantity2,
-                this.quantitys.quantity3,
-                this.quantitys.quantity4
-            )
-            this.updateProduct()
-        },
         handleClear() {
             this.fillProduct.id = '',
             this.fillProduct.title = '',

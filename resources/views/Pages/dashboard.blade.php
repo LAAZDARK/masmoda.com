@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <a href="./home.html"><i class="fa fa-home"></i> Inico</a>
-                    <a href="./shop.html">Tienda</a>
+                    <a href="{{ route('page.index')}}"><i class="fa fa-home"></i> Inico</a>
+                    <a href="{{ route('page.shop.all')}}">Tienda</a>
                     <span>Cesta</span>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                                 <li class="subtotal">IVA <span>$@{{total*.16 | formatNumber }}.00</span></li>
                                 <li class="cart-total">Total <span>$@{{total*1.16 | formatNumber}}.00</span></li>
                             </ul>
-                            <a href="#" class="proceed-btn">Pagar</a>
+                            <a href=" {{ route('page.pay.checkout') }}" class="proceed-btn">Pagar</a>
                         </div>
                     </div>
                 </div>

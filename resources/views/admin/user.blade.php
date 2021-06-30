@@ -20,6 +20,8 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
+                            <th>Genero</th>
+                            <th>Dirección</th>
                             <th colspan="2">
                                 &nbsp;
                             </th>
@@ -30,6 +32,8 @@
                             <td width="10px">@{{ item.id }}</td>
                             <td>@{{ item.name }}</td>
                             <td>@{{ item.email }}</td>
+                            <td>@{{ item.gender }}</td>
+                            <td>@{{ item.address }}</td>
                             <td width="10px">
                                 <a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteUser(item.id)">Eliminar</a>
                             </td>

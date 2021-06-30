@@ -19,7 +19,7 @@ class CreateShoppingsTable extends Migration
             $table->unsignedInteger('amount');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
-            $table->unsignedInteger('size_id');
+            $table->string('size_id');
             $table->timestamps();
         });
     }

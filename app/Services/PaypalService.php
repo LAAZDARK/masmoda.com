@@ -41,4 +41,11 @@ class PaypalService
         return "Basic {$credentials}";
     }
 
+    // public function createOrder($value, $currency)
+    // {
+    //     return $this->makeRequest(
+    //         'POST',
+    //     );
+    // }
+
 }

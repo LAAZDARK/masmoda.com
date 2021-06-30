@@ -98,4 +98,9 @@ class PagesController extends Controller
 
         return 'Mensaje enviado';
     }
+
+    public function viewCheckout()
+    {
+        return view('Pages.checkout');
+    }
 }

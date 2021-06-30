@@ -26,10 +26,10 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'address' => $this->faker->address,
-            'gender' => $this->faker->randomElement(['Mujer', 'Hombre']),
+            'gender' => $this->faker->randomElement(['Mujer', 'Hombre', 'Otro']),
             'email_verified_at' => now(),
             // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'password' => '$2y$10$t22nGaAAhOFf80rcEGGwZuMJjZ7wDr5Y4Ejvu5RYk.15AiM1gMrKm', //123456
+            'password' => '123456', //123456
             'remember_token' => Str::random(10),
         ];
     }

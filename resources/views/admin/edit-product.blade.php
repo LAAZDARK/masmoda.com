@@ -1,5 +1,5 @@
 {{-- <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="updateProduct(fillProduct.id)"> --}}
-    <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="addQuantity">
+    <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="updateProduct">
     <div class="modal fade" id="edit">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -24,54 +24,29 @@
                     <span v-for="error in errors" class="text-danger">@{{ error }}</span>
                     <div class="row">
                         <div class="col-md-4 text-center mt-3">
-                            <label for="brand">Talla</label>
-                        </div>
-                        <div class="col-md-4 text-center mt-3">
-                            <label for="brand">Cantidad</label>
+                            <label for="brand">Cantidad por tallas</label>
                         </div>
                     </div>
                     <div class="bc-item">
                         <div class="row">
-                            <div class="col-md-4 text-right">
-                                <label for="s">
-                                    Small
-                                    <input type="checkbox" value="1" name="size[]" id="s" v-model="fillProduct.size">
-                                    <span class="checkmark"></span>
-                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="col-lg-6">
+                                <label for="small">Small
+                                    <input type="number" name="small_size" v-model="fillProduct.small_size"  placeholder="cantidad">
+                                </label>
                             </div>
-                            <div class="col-md-6">
-                                <input type="number" name="quantity1" id="s" v-model="quantitys.quantity1">
+                            <div class="col-lg-6">
+                                <label for="medium">Medium
+                                    <input type="number" name="medium_size" v-model="fillProduct.medium_size" placeholder="cantidad">
+                                </label>
                             </div>
-
-                            <div class="col-md-4 text-right">
-                                <label for="m">
-                                    Medium
-                                    <input type="checkbox" value="2" name="size[]" id="m" v-model="fillProduct.size">
-                                    <span class="checkmark"></span>
-                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="col-lg-6">
+                                <label for="large">Large</label>
+                                    <input type="number" name="large_size" v-model="fillProduct.large_size" placeholder="cantidad">
+                                </label>
                             </div>
-                            <div class="col-md-6">
-                                <input type="number" name="quantity2" id="s" v-model="quantitys.quantity2"><br>
-                            </div>
-                            <div class="col-md-4 text-right">
-                                <label for="l">
-                                    Large
-                                    <input type="checkbox" value="3" name="size[]" id="l" v-model="fillProduct.size">
-                                    <span class="checkmark"></span>
-                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                            <div class="col-md-6">
-                                <input type="number" name="quantity3" id="s" v-model="quantitys.quantity3"><br>
-                            </div>
-                            <div class="col-md-4 text-right">
-                                <label for="xl">
-                                    Extra Largue
-                                    <input type="checkbox" value="4" name="size[]" id="xl" v-model="fillProduct.size">
-                                    <span class="checkmark"></span>
-                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                            <div class="col-md-6">
-                                <input type="number" name="quantity4" id="s" v-model="quantitys.quantity4"><br>
+                            <div class="col-lg-6">
+                                <label for="extra_large">Extra Large</label>
+                                <input type="number" name="extra_large_size" v-model="fillProduct.extra_large_size" placeholder="cantidad">
                             </div>
                         </div>
                     </div>

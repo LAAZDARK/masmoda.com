@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
                     <a href="{{ route('page.index')}} "><i class="fa fa-home"></i> Inicio</a>
-                    <a href="{{ route('page.index')}}">Tienda</a>
+                    <a href="{{ route('page.shop.all')}}">Tienda</a>
                     <span>Detales</span>
                 </div>
             </div>
@@ -65,25 +65,25 @@
                                     <h4>${{$product->amount}}.00</h4>
                                     <input type="hidden" ref="amount" value="{{$product->amount}}">
                                 </div>
-                                <div class="pd-desc">
+                                {{-- <div class="pd-desc">
                                     <h5>Disponibles</h5>
                                     <p>Small: {{$product->small_size}}</p>
-                                </div>
+                                </div> --}}
                                 <div class="pd-size-choose  w-25">
                                     <p>Talla</p>
                                         <select class="select-product" ref="product_size" name="size">
 
                                             @if($product->small_size)
-                                                <option value="1">Small</option>
+                                                <option value="S">Small</option>
                                             @endif
                                             @if($product->medium_size)
-                                                <option value="1">Medium</option>
+                                                <option value="M">Medium</option>
                                             @endif
                                             @if($product->large_size)
-                                                <option value="1">Large</option>
+                                                <option value="L">Large</option>
                                             @endif
                                             @if($product->extra_large_size)
-                                                <option value="1">Extra Large</option>
+                                                <option value="XL">Extra Large</option>
                                             @endif
 
                                         </select>
