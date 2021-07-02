@@ -88,11 +88,53 @@
 
                                         </select>
                                 </div>
+
+                                @if(Auth::check())
                                     <div class="quantity">
                                         <input type="hidden" ref="product_id" value="{{$product->id}}">
                                         {{-- <input class="w-25" type="number" v-model="form.quantity"> --}}
                                         <button class="primary-btn pd-cart">Agregar</button>
                                     </div>
+                                @else
+
+                                    <a class="primary-btn pd-cart" href="{{ route('page.login')}}">Agregar</a>
+                                    {{-- <button type="button" class="primary-btn pd-cart" data-toggle="modal" data-target="#exampleModal" >Agregarr</button> --}}
+
+                                    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('login')}}" method="post" name="loginFrom">
+                                            @csrf
+                                                <div class="form-group">
+                                                    <label for="email" class="col-form-label">Correo electrónico:</label>
+                                                    <input type="text" class="form-control" name="email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email" class="col-form-label">Contraseña:</label>
+                                                    <input type="password" class="form-control" name="password" required>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Iniciar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div> --}}
+                                @endif
+
+
+                                    {{-- Iniciar sesion --}}
+
+
                             </form>
                                 <ul class="pd-tags">
                                     <li><span>Categoria</span>: {{ $product->category}}</li>

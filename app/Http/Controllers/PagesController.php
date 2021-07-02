@@ -103,4 +103,15 @@ class PagesController extends Controller
     {
         return view('Pages.checkout');
     }
+
+
+
+    public function viewTerms()
+    {
+        return view('Pages.terms');
+    }
+
+
+
+
 }

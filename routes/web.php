@@ -41,6 +41,7 @@ Route::name('page.')->group(function () {
 
     Route::get("/contacto", [PagesController::class, "viewContact"])->name('contact');
     Route::post("/contact", [PagesController::class, "storeContact"])->name('contact.store');
+    Route::get("/terminos", [PagesController::class, "viewTerms"])->name('terms');
     Route::get("/registro", [PagesController::class, "viewRegister"])->name('register');
     Route::get("/dashboard", [PagesController::class, "viewDashboard"])->name('dashboard');
     Route::get("/login", [PagesController::class, "viewLogin"])->name('login');
@@ -79,7 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/user', UserController::class, ['except' => [
             'create', 'edit'
         ]])->names('user');
-        Route::get("/list", [AdminController::class, "index"])->name('list');
+        Route::resource("/list", AdminController::class )->names('src');
 
         Route::resource('/product', ProductAdminController::class, ['except' => [
             'create', 'edit'

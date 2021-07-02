@@ -81,9 +81,9 @@
                         <div class="order-total">
                             <ul class="order-table">
                                 <li>Productos <span>Total</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
+                                <li class="fw-normal">Prenda x 1 <span>$60.00</span></li>
+                                <li class="fw-normal">Prenda x 1 <span>$60.00</span></li>
+                                <li class="fw-normal">Prenda x 1 <span>$120.00</span></li>
                                 <li class="fw-normal">Subtotal <span>$240.00</span></li>
                                 <li class="total-price">Total <span>$240.00</span></li>
                             </ul>

@@ -13,20 +13,21 @@
                         <li> <a href="mailto:contacto@masmoda.com"> Email: contacto@masmoda.com</a></li>
                     </ul>
                     <div class="footer-social">
-                        <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                        <a target="_blank" href="https://www.instagram.com/?hl=es-la"><i class="fa fa-instagram"></i></a>
-                        <a target="_blank" href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
-                        <a target="_blank" href="https://www.pinterest.com.mx/"><i class="fa fa-pinterest"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/"><i class="ti-facebook"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/?hl=es-la"><i class="ti-instagram"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/"><i class="ti-youtube"></i></a>
+                        <a target="_blank" href="https://www.pinterest.com.mx/"><i class="ti-pinterest"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 offset-lg-1">
+            <div class="col-lg-3 offset-lg-1">
                 <div class="footer-widget">
                     <h5>Paginas</h5>
                     <ul>
                         <li><a href="{{ route('page.contact')}} ">Contacto</a></li>
                         <li><a href=" {{ route('page.shop.caballero')}} ">Caballero</a></li>
                         <li><a href="{{ route('page.shop.dama')}}">Dama</a></li>
+                        <li><a href="{{ route('page.terms')}}">Términos y condiciones</a></li>
                     </ul>
                 </div>
             </div>

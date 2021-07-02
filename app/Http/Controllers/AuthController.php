@@ -59,6 +59,7 @@ class AuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 Auth::guard()->login($user);
                 return redirect()->route("page.index");
+                // return back()->withInput();
 
             }else{
                 dd('no funciona');

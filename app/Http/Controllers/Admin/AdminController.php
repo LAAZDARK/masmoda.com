@@ -29,9 +29,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $admin = Admin::findOrFail($id);
 
-        $user->delete();
+        $admin->delete();
 
         return $this->sendResponse(true, 'se ha elimindao el usuario seleccionado');
     }

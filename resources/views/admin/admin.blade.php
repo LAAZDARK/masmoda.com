@@ -13,7 +13,7 @@
                     <h2>Lista de administradores</h2>
                 </div>
 
-                <input type="hidden" ref="getAdmin" value="{{route('admin.list')}}">
+                <input type="hidden" ref="getAdmin" value="{{route('admin.src.index')}}">
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
@@ -31,7 +31,7 @@
                             <td>@{{ item.name }}</td>
                             <td>@{{ item.email }}</td>
                             <td width="10px">
-                                <a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteUser(item.id)">Eliminar</a>
+                                <a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteAdmin(item.id)">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>
