@@ -47,18 +47,17 @@
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <div v-for="items in cart">
-                                                        <div v-for="item in items.data">
-                                                            <div v-for="product in item">
-                                                                <div class="row m-2">
-                                                                    <div class="col-4">
-                                                                        <img :src="'/storage/'+ product.image "  width="50" height="60" alt="Imagen de producto">
-                                                                    </div>
-                                                                    <div class="col-8">
-                                                                        <h6>@{{product.title}}</h6>
-                                                                        <p>$@{{product.amount}}.00</p>
-                                                                    </div>
-                                                                </div>
+                                                    <div v-for="product in cart">
+                                                        <div class="row ">
+                                                            <div class="col-3">
+                                                                <img :src="'/storage/'+ product.image "  width="50" height="60" alt="Imagen de producto">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h6>@{{product.title}}</h6>
+                                                                <p>$@{{product.amount}}.00</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <button class="btn btn-danger btn-sm" v-on:click.prevent="deleteProduct(product.id)">Eliminar</button>
                                                             </div>
                                                         </div>
                                                     </div>

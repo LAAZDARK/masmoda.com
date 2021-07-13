@@ -3,7 +3,7 @@
 @section('contenido')
 
  <!-- Breadcrumb Section Begin -->
- <div class="breacrumb-section">
+<div class="breacrumb-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -28,11 +28,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div v-for="items in cart">
-                    <div v-for="item in items.data">
-                        <div v-for="product in item">
+                {{-- <div v-for="items in cart"> --}}
+                    {{-- <div v-for="item in cart"> --}}
+                        <div v-for="product in cart">
                             <div class="row m-4">
-                                <div class="col-3 text-center">
+                                <div class="col-2 text-center">
                                     <img :src="'/storage/'+ product.image " width="80" height="100" alt="Imagen de producto">
                                 </div>
                                 <div class="col-3">
@@ -42,13 +42,16 @@
                                     <h6>@{{product.description.substring(0, 80)}}</h6>
                                     {{-- <h6>{{  \Str::limit(strip_tags(product.description), 100,'...')  }}</h6> --}}
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <p>$@{{product.amount}}.00</p>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn-danger btn-sm" v-on:click.prevent="deleteProduct(product.id)">Eliminar</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {{-- </div> --}}
+                {{-- </div> --}}
                 <div class="row">
                     <div class="offset-lg-4">
 
@@ -68,6 +71,7 @@
         </div>
     </div>
 </section>
+</div>
 
 <!-- Shopping Cart Section End -->
 

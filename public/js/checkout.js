@@ -1,15 +1,23 @@
-const CartD = {
+// var numeral = require("numeral");
+
+//   Vue.filter("formatNumber", function (value) {
+//     return numeral(value).format("0,0"); // displaying other groupings/separators is possible, look at the docs
+//   });
+const Checkout = {
     data() {
         return {
             cart: null,
             count: null,
-            total: null
+            total: null,
+            user: null,
+            value1: true,
         };
     },
     mounted: function() {
 		this.getShopping();
         this.getCountProduct();
         this.getSumProduct();
+        this.getUser();
 	},
     methods: {
         getShopping: function() {
@@ -17,18 +25,25 @@ const CartD = {
             .then(response => {
                 this.cart = response.data.data
             });
-
-
+        },
+        getUser: function() {
+            axios.get(this.$refs.getUser.value)
+            .then(response => {
+                this.user = response.data
+            });
         },
         getCountProduct: function() {
             axios.get(this.$refs.countProduct.value)
-            .then(response => (this.count = response.data.data))
+            .then(response => (this.count = response))
             console.log(this.count);
         },
         getSumProduct: function() {
             axios.get(this.$refs.sumProduct.value)
             .then(response => (this.total = response.data.data))
             console.log(this.total);
+        },
+        formatNumber: function(value) {
+            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(value);
         },
         deleteProduct: function(id) {
             // console.log(id);
@@ -39,4 +54,4 @@ const CartD = {
     }
 };
 
-Vue.createApp(CartD).mount("#cart");
+Vue.createApp(Checkout).mount("#checkout");

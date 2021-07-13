@@ -29,8 +29,8 @@ class Shopping extends Model
     //     return $this->belongsToMany(Product::class);
     // }
 
-    // public function users ()
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
+    public function user ()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

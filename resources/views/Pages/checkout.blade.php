@@ -19,20 +19,37 @@
 <!-- Breadcrumb Section Begin -->
 
 <!-- Shopping Cart Section Begin -->
+<div id="checkout">
+<input type="hidden" ref="getCard" value="{{route('shopping.index')}}">
+<input type="hidden" ref="countProduct" value="{{route('count.product')}}">
+<input type="hidden" ref="sumProduct" value="{{route('sum.product')}}">
+<input type="hidden" ref="getUser" value="{{route('users.index')}}">
 <section class="checkout-section spad">
     <div class="container">
         <form action="#" class="checkout-form">
             <div class="row">
                 <div class="col-lg-6">
+                    <el-switch
+                        v-model="value1"
+                        active-text="Pay by month"
+                        inactive-text="Pay by year">
+                    </el-switch>
                     <h4>Detalles de facturación</h4>
                     <div class="row">
                         <div class="col-lg-12">
+
                             <div class="create-item">
+
                                 <label for="acc-create">
                                     ¿Desea usar los siguientes datos?
                                     <input type="checkbox" id="acc-create">
                                     <span class="checkmark"></span>
                                 </label>
+                            </div>
+                            <div  v-for="item in user">
+                                <p>@{{item.name}}</p>
+                                <p>@{{item.email}}</p>
+                                <p>@{{item.address}}</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -81,11 +98,12 @@
                         <div class="order-total">
                             <ul class="order-table">
                                 <li>Productos <span>Total</span></li>
-                                <li class="fw-normal">Prenda x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Prenda x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Prenda x 1 <span>$120.00</span></li>
-                                <li class="fw-normal">Subtotal <span>$240.00</span></li>
-                                <li class="total-price">Total <span>$240.00</span></li>
+                                <div v-for="product in cart">
+                                    <li class="fw-normal">@{{product.title}}<span>$@{{product.amount}}.00</span></li>
+                                </div>
+                                <li class="fw-normal">Subtotal<span>@{{total | formatNumber}}.00</span></li>
+                                <li class="fw-normal">IVA<span>$@{{total*.16 | formatNumber }}.00</span></li>
+                                <li class="total-price">Total <span>$@{{total*1.16 | formatNumber}}.00</span></li>
                             </ul>
                             <div class="order-btn">
                                 <button type="submit" class="site-btn place-btn">Realizar pago</button>
@@ -97,6 +115,7 @@
         </form>
     </div>
 </section>
+</div>
 <!-- Shopping Cart Section End -->
 
 @include('Pages.chunks.banner-brand')
@@ -104,5 +123,8 @@
 @endsection
 
 @push('js-script')
-    <script src="{{asset('js/contact.js')}}"></script>
+<!-- import JavaScript -->
+{{-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> --}}
+<script src="{{asset('js/checkout.js')}}"></script>
+
 @endpush

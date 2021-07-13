@@ -13,66 +13,22 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 
-class ShoppingController extends Controller
+class UsersController extends Controller
 {
     use ResponseApi;
 
 
-    public function getShop() {
 
-        $product = Product::all();
-
-        dd($product);
-
-        return $this->sendResponse($product, 'Lista de todos los productos');
-    }
-
-    public function index()
+    public function index(Request $request)
     {
-        // if (Auth::check()) {
-        //     $user = Auth::user();
-        //     $product=[];
-        //     $shopping = Shopping::where('user_id', $user->id)->get();
-        //     foreach ($shopping as $item) {
-        //         $product[] = Product::where('id', $item->product_id)->get();
-        //     }
 
+        $user = $request->user();
 
-        //     return $this->sendResponse($product, 'Se agrego correctamente', 200);
-        // }
-
-        if (Auth::check()) {
-            $user = Auth::user();
-
-            // $data = $user->shoppings;
-
-            $product = DB::table('products')
-                ->leftJoin('shoppings', 'products.id', '=', 'shoppings.product_id')
-                ->where('shoppings.user_id', $user->id)
-                ->get();
-
-
-            return $this->sendResponse($product, 'Lista de porductos seleccionados', 200);
-        }
-
-        return $this->sendResponse($product, 'Usuario no autenticado', 200);
+        return $this->sendResponse($user, 'usuario', 200);
     }
 
 
-    public function sumTotalProduct()
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $total=0;
-            $shopping = Shopping::where('user_id', $user->id)->get();
-            foreach ($shopping as $item) {
-                $total += Product::where('id', $item->product_id)->sum('amount');
-            }
-            return $this->sendResponse($total, 'Suma total de productos', 200);
-        }
 
-        return $this->sendResponse('index shopping', 'Usuario no autenticado', 200);
-    }
 
     public function conutProducts()
     {

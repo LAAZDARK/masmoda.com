@@ -19,9 +19,11 @@ const CartDashboard = {
     methods: {
         getShopping: function() {
             axios.get(this.$refs.getCard.value)
-            .then(response => (this.cart = response))
+            .then(response => {
+                this.cart = response.data.data
+            });
 
-            // console.log(this.cart);
+
         },
         getCountProduct: function() {
             axios.get(this.$refs.countProduct.value)
@@ -35,7 +37,13 @@ const CartDashboard = {
         },
         formatNumber: function(value) {
             return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(value);
-        }
+        },
+        deleteProduct: function(id) {
+            // console.log(id);
+			axios.delete(this.$refs.getCard.value + '/' + id).then(response => { //eliminamos
+				this.getShopping();
+			});
+		},
     }
 };
 

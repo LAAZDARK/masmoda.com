@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -54,6 +55,10 @@ Route::name('page.')->group(function () {
 Route::resource('shopping', ShoppingController::class)->names('shopping');
 Route::get("/count-product", [ShoppingController::class, "conutProducts"])->name('count.product');
 Route::get("/sum-product", [ShoppingController::class, "sumTotalProduct"])->name('sum.product');
+
+Route::middleware('web')->group(function () {
+    Route::resource('users', UsersController::class)->names('users');
+});
 
 
 
