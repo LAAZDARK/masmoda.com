@@ -24,16 +24,12 @@
 <input type="hidden" ref="countProduct" value="{{route('count.product')}}">
 <input type="hidden" ref="sumProduct" value="{{route('sum.product')}}">
 <input type="hidden" ref="getUser" value="{{route('users.index')}}">
+<input type="hidden" ref="postPayment" value="{{route('page.pay.payment')}}">
 <section class="checkout-section spad">
     <div class="container">
-        <form action="#" class="checkout-form">
+        <form method="post" name="formPay" action=" {{ route('page.pay.payment') }}" class="checkout-form">
             <div class="row">
                 <div class="col-lg-6">
-                    <el-switch
-                        v-model="value1"
-                        active-text="Pay by month"
-                        inactive-text="Pay by year">
-                    </el-switch>
                     <h4>Detalles de facturación</h4>
                     <div class="row">
                         <div class="col-lg-12">
@@ -52,7 +48,7 @@
                                 <p>@{{item.address}}</p>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        {{-- <div class="col-lg-6">
                             <label for="fir">Nombre<span>*</span></label>
                             <input type="text" id="fir">
                         </div>
@@ -89,7 +85,7 @@
                         <div class="col-lg-6">
                             <label for="phone">Telefono<span>*</span></label>
                             <input type="text" id="phone">
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -105,9 +101,15 @@
                                 <li class="fw-normal">IVA<span>$@{{total*.16 | formatNumber }}.00</span></li>
                                 <li class="total-price">Total <span>$@{{total*1.16 | formatNumber}}.00</span></li>
                             </ul>
-                            <div class="order-btn">
+                            {{-- <form method="post" name="formPay" action=" {{ route('page.pay.payment') }}"> --}}
+                                @csrf
+                                <div>
+                                    <input type="text" name="total" v-model="total">
+                                </div>
+                                <div class="order-btn">
+                                </div>
                                 <button type="submit" class="site-btn place-btn">Realizar pago</button>
-                            </div>
+                            {{-- </form> --}}
                         </div>
                     </div>
                 </div>

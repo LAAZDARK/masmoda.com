@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -49,6 +50,10 @@ Route::name('page.')->group(function () {
     Route::get("/detalles/{id}", [ProductAdminController::class, "viewProduct"])->name('product');
 
     Route::get("/checkout", [PagesController::class, "viewCheckout"])->name('pay.checkout');
+    Route::post("/payment", [PaymentController::class, "storePayment"])->name('pay.payment');
+
+    Route::get("/payment/approval", [PaymentController::class, "approval"])->name('approval');
+    Route::get("/payment/cancelled", [PaymentController::class, "cancelled"])->name('cancelled');
 
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
 use App\Traits\ConsumesExternalServices;
 
 class PaypalService
@@ -41,11 +42,76 @@ class PaypalService
         return "Basic {$credentials}";
     }
 
-    // public function createOrder($value, $currency)
-    // {
-    //     return $this->makeRequest(
-    //         'POST',
-    //     );
-    // }
+    public function handlePayment(Request $request)
+    {
+
+        $order = $this->createOrder($request->total, 'mxn');
+
+        $orderLinks = collect($order->links);
+
+        $approve = $orderLinks->where('rel', 'approve')->first();
+
+        session()->put('approveId', $order->id);
+
+        return redirect($approve->href);
+        // return response()->json($approve->href);
+    }
+
+    public function handleApproval()
+    {
+        if (session()->has('approveId')) {
+            $approvalId = session()->get('approveId');
+
+            $payment = $this->capturePayment($approvalId);
+
+            $name = $payment->payer->name->given_name;
+
+            return redirect()->route('page.index')->withSuccess("Gracias {$name}");
+        }
+
+        return redirect()->route('page.index')->withErrors('Error');
+    }
+
+    public function createOrder($value, $currency)
+    {
+        return $this->makeRequest(
+            'POST',
+            '/v2/checkout/orders',
+            [],
+            [
+                'intent' => 'CAPTURE',
+                'purchase_units' => [
+                    0 => [
+                        'amount' => [
+                            'currency_code' => strtoupper($currency),
+                            'value' => $value,
+                        ]
+                    ]
+                ],
+                'application_contex' => [
+                    'brand_name' => config('app.name', 'masmoda'),
+                    'shipping_preference' => 'NO_SHIPPING',
+                    'user_action' => 'PAY_NOW',
+                    'return_url' => route('page.approval'),
+                    'cancel_url' => route('page.cancelled'),
+                ]
+            ],
+            [],
+            $isJsonRequest = true,
+        );
+    }
+
+    public function capturePayment($approvalId)
+    {
+        return $this->makeRequest(
+            'POST',
+            "/v2/checkout/orders/{$approvalId}/capture",
+            [],
+            [],
+            [
+                'content-Type' => 'application/json',
+            ],
+        );
+    }
 
 }

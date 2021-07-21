@@ -11,6 +11,7 @@ const Checkout = {
             total: null,
             user: null,
             value1: true,
+            amount: {}
         };
     },
     mounted: function() {
@@ -51,6 +52,14 @@ const Checkout = {
 				this.getShopping();
 			});
 		},
+        payment: function() {
+            this.amount.total = this.total
+            axios.post(this.$refs.postPayment.value, this.amount)
+            .then(response => {
+               console.log(response.data);
+               window.location.href = response.data;
+            });
+        },
     }
 };
 

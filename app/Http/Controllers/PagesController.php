@@ -112,6 +112,16 @@ class PagesController extends Controller
     }
 
 
+    public function viewApproval()
+    {
+        return view('Pages.approval');
+    }
+
+    public function viewCancelled()
+    {
+        return view('Pages.cancelled');
+    }
+
 
 
 }
