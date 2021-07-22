@@ -53,6 +53,8 @@ class PaypalService
 
         session()->put('approveId', $order->id);
 
+        // session(['approveId' => $order->id]);
+
         return redirect($approve->href);
         // return response()->json($approve->href);
     }
@@ -88,7 +90,7 @@ class PaypalService
                         ]
                     ]
                 ],
-                'application_contex' => [
+                'application_context' => [
                     'brand_name' => config('app.name', 'masmoda'),
                     'shipping_preference' => 'NO_SHIPPING',
                     'user_action' => 'PAY_NOW',
