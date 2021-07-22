@@ -53,10 +53,7 @@ class PaypalService
 
         session()->put('approveId', $order->id);
 
-        // session(['approveId' => $order->id]);
-
         return redirect($approve->href);
-        // return response()->json($approve->href);
     }
 
     public function handleApproval()

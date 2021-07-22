@@ -9,7 +9,7 @@ const Checkout = {
             cart: null,
             count: null,
             total: null,
-            user: null,
+            user: {},
             value1: true,
             amount: {}
         };
@@ -30,7 +30,8 @@ const Checkout = {
         getUser: function() {
             axios.get(this.$refs.getUser.value)
             .then(response => {
-                this.user = response.data
+                // console.log(response.data.data);
+                this.user = response.data.data
             });
         },
         getCountProduct: function() {

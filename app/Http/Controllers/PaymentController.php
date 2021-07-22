@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Services\PaypalService;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -36,6 +37,8 @@ class PaymentController extends Controller
     {
         $paymentPlatform = resolve(PaypalService::class);
 
+        $this->_paymentMade();
+
         return $paymentPlatform->handleApproval();
 
     }
@@ -43,5 +46,23 @@ class PaymentController extends Controller
     public function cancelled ()
     {
         //
+    }
+
+
+    public function _paymentMade ()
+    {
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $shopping = Shopping::where('user_id', $user->id)->where('status', 'Cart')->get();
+            foreach ($shopping as $item) {
+                $shop = Shopping::findOrFail($item->id);
+                $shop->status = Shopping::STATUS_SOLD;
+                $shop->save();
+            }
+            // return $this->sendResponse($shop, 'Pagado', 200);
+        }
+
+        // return $this->sendResponse('index shopping', 'Usuario no autenticado', 200);
     }
 }

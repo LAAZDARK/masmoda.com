@@ -49,6 +49,7 @@ class ShoppingController extends Controller
             $product = DB::table('products')
                 ->leftJoin('shoppings', 'products.id', '=', 'shoppings.product_id')
                 ->where('shoppings.user_id', $user->id)
+                ->where('shoppings.status', 'Cart')
                 ->get();
 
 
@@ -64,7 +65,7 @@ class ShoppingController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $total=0;
-            $shopping = Shopping::where('user_id', $user->id)->get();
+            $shopping = Shopping::where('user_id', $user->id)->where('status', 'Cart')->get();
             foreach ($shopping as $item) {
                 $total += Product::where('id', $item->product_id)->sum('amount');
             }
@@ -79,7 +80,7 @@ class ShoppingController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
 
-            $count = Shopping::where('user_id', $user->id)->count();
+            $count = Shopping::where('user_id', $user->id)->where('status', 'Cart')->count();
 
             return $this->sendResponse($count, 'Se agrego correctamente', 200);
         }

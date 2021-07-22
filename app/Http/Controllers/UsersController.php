@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\User;
 
+use App\Models\Product;
 use App\Models\Shopping;
 use App\Traits\ResponseApi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 
 class UsersController extends Controller
@@ -23,8 +24,11 @@ class UsersController extends Controller
     {
 
         $user = $request->user();
+        // $user = Auth::user();
 
-        return $this->sendResponse($user, 'usuario', 200);
+        // $user = User::where('id', $user->id)->first();
+
+        return $this->sendResponse($user, 'usuario');
     }
 
 

@@ -36,17 +36,17 @@
 
                             <div class="create-item">
 
-                                <label for="acc-create">
+                                {{-- <label for="acc-create">
                                     ¿Desea usar los siguientes datos?
                                     <input type="checkbox" id="acc-create">
                                     <span class="checkmark"></span>
-                                </label>
+                                </label> --}}
                             </div>
-                            <div  v-for="item in user">
-                                <p>@{{item.name}}</p>
-                                <p>@{{item.email}}</p>
-                                <p>@{{item.address}}</p>
-                            </div>
+                            {{-- <div  v-for="item in user"> --}}
+                                <p>Nombre: @{{user.name}}</p>
+                                <p>Correo: @{{user.email}}</p>
+                                <p>Dirección: @{{user.address}}</p>
+                            {{-- </div> --}}
                         </div>
                         {{-- <div class="col-lg-6">
                             <label for="fir">Nombre<span>*</span></label>
@@ -104,7 +104,7 @@
                             {{-- <form method="post" name="formPay" action=" {{ route('page.pay.payment') }}"> --}}
                                 @csrf
                                 <div>
-                                    <input type="text" name="total" v-model="total">
+                                    <input type="hidden" name="total" v-model="total">
                                 </div>
                                 <div class="order-btn">
                                 </div>
