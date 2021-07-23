@@ -45,7 +45,7 @@ class PaymentController extends Controller
 
     public function cancelled ()
     {
-        //
+        return redirect()->route('page.index')->with('error', 'Ha ocurrido un error con el pago, vuelva a intentarlo');
     }
 
 

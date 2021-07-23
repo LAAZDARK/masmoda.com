@@ -16,6 +16,9 @@ const Contact = {
                 // console.log(response.data)
                 this.send = response.data
                 console.log(this.send);
+                this.form.name = '',
+                this.form.email = '',
+                this.form.message = ''
             }).catch(error => {
                 console.log("Error login")
                 console.log(error)

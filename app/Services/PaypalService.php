@@ -65,10 +65,10 @@ class PaypalService
 
             $name = $payment->payer->name->given_name;
 
-            return redirect()->route('page.index')->withSuccess("Gracias {$name}");
+            return redirect()->route('page.index')->with("success", "¡Gracias {$name}!, Enviaremos su pedido lo antes posible");
         }
 
-        return redirect()->route('page.index')->withErrors('Error');
+        return redirect()->route('page.index')->with('error', 'Ha ocurrido un error con el pago');
     }
 
     public function createOrder($value, $currency)
