@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\PagesAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
@@ -68,7 +69,7 @@ Route::middleware('web')->group(function () {
 
 
 
-
+// Route::post('/upload', [ProductAdminController::class, 'image'])->name('image.upload');
 
 
 
@@ -77,6 +78,7 @@ Route::middleware('web')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get("/login", [PagesAdminController::class, "viewLogin"])->name('login');
     Route::post("/login", [AuthAdminController::class, "login"])->name('post.login');
+    Route::post('/upload', [ProductAdminController::class, 'image'])->name('image.upload');
 
     Route::middleware('auth:admin')->group(function () {
         Route::get("/", [PagesAdminController::class, "viewHome"])->name('home');

@@ -154,4 +154,23 @@ class ProductAdminController extends Controller
 
         return $this->sendResponse(true, 'se ha elimindao el produco seleccionado');
     }
+
+    public function image(Request $request)
+    {
+
+        dd($request['image']);
+
+
+
+        $pathImage = $request['image']->store('upload-product', 'public');
+
+
+        $img = Image::make(public_path("storage/{$pathImage}"))->fit(440, 520);
+        $img->save();
+        // $product = new Product();
+        // $product->image = $pathImage;
+
+
+        return $pathImage;
+    }
 }
